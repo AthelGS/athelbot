@@ -14,7 +14,7 @@ else:
 	"Test quote 2",
 	"Test quote 3"]
 
-quotelen = len(quotes)
+quotelen = len(quotes) - 1
 print (quotelen)
 
 TOKEN = 'NTI5NzE0MTIzODQ4ODEwNTA3.Dw02vw.20hD7RnhdwIfDiKJ78Twwdfmjo4'
@@ -24,7 +24,7 @@ activity = discord.Game(name="with the API")
 
 @client.event
 async def on_message(message):
-	quotelen = len(quotes)
+	quotelen = len(quotes) - 1
 	if message.author == client.user:
 		return
 	
