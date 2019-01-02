@@ -63,7 +63,12 @@ async def on_message(message):
 		
 	if message.content.startswith('a-qnum'): # Add a quote
 		msg = 'This is a WIP.'
+		msg = 'Please select a quote (0 -' + str(len(quotes)-1) + ')'
 		await client.send_message(message.channel, msg)
+		msg = await client.wait_for_message(author=message.author)
+		msg = str(msg.content)
+		await client.send_message(message.channel, msg)
+		
 
 		
 @client.event
