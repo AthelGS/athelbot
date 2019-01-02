@@ -60,15 +60,17 @@ async def on_message(message):
 		msg = 'Quote added! ' + str(msg.content)
 		quotelen = len(quotes)
 		await client.send_message(message.channel, msg)
-	
+		
 	if message.content.startswith('a-qnum'): # Add a quote
 		msg = 'Please type the quote number you want to see. You have ' + str(len(quotes)-1) + " quotes to choose from".format(message)
 		await client.send_message(message.channel, msg)
 		msg = await client.wait_for_message(author=message.author)
-		msg = quotes[int(msg.content)]
-		await client.send_message(message.channel, msg)
+		quchoice = quotes[int(msg.content)
+		embed = discord.Embed(title="Athel Quote", description=quotes[quchoice], color=0x00ffff)
+		embed.set_footer(text= "Quote #" + str(quchoice) + " of " + str(quotelen) + " quotes.")
+		# msg = str(random.choice(quotes)).format(message)
+		await client.send_message(message.channel, embed=embed)
 		
-
 @client.event
 async def on_ready():
 
