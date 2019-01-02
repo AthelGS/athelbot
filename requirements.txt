@@ -1,3 +1,2 @@
 discord.py
-athelbot.py
 athelbotcfg.txt
