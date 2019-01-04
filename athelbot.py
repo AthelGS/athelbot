@@ -32,6 +32,10 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 	
+	if message.content == ('a-testthis'):
+		msg = "Whaddya know, it works!"
+		await client.send_message(message.channel, msg)
+	
 	if message.content.startswith('a-quote'): # Send a random quote
 		quchoice = random.randint(0, quotelen)
 		embed = discord.Embed(title="Athel Quote", description=quotes[quchoice], color=0x00ffff)
