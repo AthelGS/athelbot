@@ -1,3 +1,5 @@
+from boto.s3.connection import S3Connection
+
 import os
 
 import discord
@@ -16,6 +18,8 @@ else:
 
 quotelen = len(quotes) - 1
 print (quotelen)
+
+SPACE_MAGIC = S3Connection(os.environ['SECRET_CODE_THING'])
 
 client = discord.Client()
 activity = discord.Game(name="with the API")
@@ -80,7 +84,7 @@ async def on_ready():
 	print(client.user.name)
 	print(client.user.id)
 	
-client.run(process.env.SECRET_CODE_THING)
+client.run(process.env.SPACE_MAGIC)
 
 if os.path.exists("athelbotcfg.txt"):
 	os.remove("athelbotcfg.txt")
