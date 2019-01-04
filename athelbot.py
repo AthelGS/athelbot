@@ -66,16 +66,25 @@ async def on_message(message):
 		await client.send_message(message.channel, msg)
 		
 	if message.content.startswith('a-qnum'): # Add a quote
+		quotelen = len(quotes) - 1
 		msg = 'This is a WIP.'
-		msg = 'Please select a quote (0 -' + str(len(quotes)-1) + ')'
+		msg = 'Please select a quote (0 - ' + str(len(quotes)-1) + ')'
 		await client.send_message(message.channel, msg)
 		msg = await client.wait_for_message(author=message.author)
 		msg = str(msg.content)
-		quchoice = int(msg.content)
-		embed = discord.Embed(title="Athel Quote", description=quotes[quchoice], color=0x00ffff)
-		embed.set_footer(text= "Quote #" + str(quchoice) + " of " + str(quotelen) + " quotes.")
+		embed = discord.Embed(title="Athel Quote", description=quotes[int(msg)], color=0x00ffff)
+		embed.set_footer(text= "Quote #" + str(msg) + " of " + str(len(quotes)-1) + " quotes.")
 		# msg = str(random.choice(quotes)).format(message)
 		await client.send_message(message.channel, embed=embed)
+	
+	if message.content.startswith('a-delquote'): # Deletes a quote
+		msg = 'Please select a quote (0 - ' + str(len(quotes)-1) + ')'
+		await client.send_message(message.channel, msg)
+		msg = await client.wait_for_message(author=message.author)
+		msg = str(msg.content)
+		quotes.pop(int(msg))
+		msg = 'Quote number ' + str(msg) + ' deleted!'
+		await client.send_message(message.channel, msg)
 		
 
 		
