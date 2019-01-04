@@ -50,6 +50,7 @@ async def on_message(message):
 		embed = discord.Embed(title="AthelBot commands", description="All command prefixes are 'a-', keep this in mind.", color=0x00ffff)
 		embed.add_field(name="help", value="Displays this help dialogue.", inline=False)
 		embed.add_field(name="quote", value="Picks a random Athel quote.", inline=False)
+		embed.add_field(name="delquote", value="Deletes a quote by number.", inline=False)
 		embed.add_field(name="addquote", value="Add a quote to Athel quotes.", inline=False)
 		embed.add_field(name="qnum", value="Pick a quote by number.", inline=False)
 		await client.send_message(message.channel, embed=embed)
