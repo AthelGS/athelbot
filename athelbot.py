@@ -84,7 +84,7 @@ async def on_ready():
 	print(client.user.name)
 	print(client.user.id)
 	
-client.run(process.env.SPACE_MAGIC)
+client.run(SPACE_MAGIC)
 
 if os.path.exists("athelbotcfg.txt"):
 	os.remove("athelbotcfg.txt")
