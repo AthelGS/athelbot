@@ -35,16 +35,6 @@ async def on_message(message):
 	if message.content == ('a-testthis'):
 		msg = "Whaddya know, it works!"
 		await client.send_message(message.channel, msg)
-	
-	if message.content.startswith('$cool'):
-        	await client.send_message(message.channel, 'Who is cool? Type $name namehere')
-		
-        	def check(msg):
-			return msg.content.startswith('$name')
-
-        	message = await client.wait_for_message(author=message.author, check=check)
-        	name = message.content[len('$name'):].strip()
-        	await client.send_message(message.channel, '{} is cool indeed'.format(name))
 		
 	if message.content.startswith('a-quote'): # Send a random quote
 		quchoice = random.randint(0, quotelen)
