@@ -19,7 +19,9 @@ else:
 quotelen = len(quotes) - 1
 print (quotelen)
 
-SPACE_MAGIC = S3Connection(os.environ['SECRET_CODE_THING'])
+#SPACE_MAGIC = S3Connection(os.environ['SECRET_CODE_THING'])
+
+bot_token = os.environ['BOT_TOKEN']
 
 client = discord.Client()
 activity = discord.Game(name="with the API")
@@ -84,7 +86,7 @@ async def on_ready():
 	print(client.user.name)
 	print(client.user.id)
 	
-client.run(SPACE_MAGIC)
+client.run(bot_token)
 
 if os.path.exists("athelbotcfg.txt"):
 	os.remove("athelbotcfg.txt")
