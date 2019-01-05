@@ -26,7 +26,7 @@ async def test():
 
 @client.command()
 async def quote(number):
-	if number is None:
+	if number == "random":
 		await client.say("quote")
 	else:
 		await client.say(quotes[int(number)])
