@@ -27,9 +27,13 @@ async def test():
 @client.command()
 async def quote(number):
 	if number == "random":
-		await client.say("quote")
+		quote_choice = random.randint(o, len(quotes))
 	else:
-		await client.say(quotes[int(number)])
+		quote_choice = number
+	
+	embed = discord.Embed(title="Athel Quote", description=quotes[quote_choice], color=0x00ffff)
+	embed.set_footer(text= "Quote #" + str(quote_choice) + " of " + str(len(quotes) + " quotes.")
+	await client.send_message(message.channel, embed=embed)
 
 client.run(TOKEN)
 
