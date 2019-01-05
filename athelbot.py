@@ -24,6 +24,7 @@ client = Bot(command_prefix = BOT_PREFIX)
 async def test():
 	await client.say("pong")
 
+@client.command()
 async def quote():
 	await client.say("quote")
 
