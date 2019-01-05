@@ -43,7 +43,6 @@ async def help():
 	embed.add_field(name="delquote", value="Deletes a quote by number.", inline=False)
 	embed.add_field(name="addquote", value="Add a quote to Athel quotes.", inline=False)
 	embed.add_field(name="qnum", value="Pick a quote by number.", inline=False)
-	embed.set_footer(text= "You can also do 'a-help <command>' to get more info on a specific command.")
 	await client.send_message(message.channel, embed=embed)
 
 client.run(TOKEN)
