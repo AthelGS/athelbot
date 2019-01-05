@@ -26,8 +26,10 @@ async def test():
 
 @client.command()
 async def quote(number):
-	if number == None:
+	if number == '':
 		await client.say("quote")
+	else:
+		await client.say(quotes[number])
 
 client.run(TOKEN)
 
