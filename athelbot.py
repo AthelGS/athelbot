@@ -35,18 +35,7 @@ async def quote(number):
 	embed.set_footer(text= "Quote #" + str(quote_choice) + " of " + str(len(quotes) + " quotes."))
 	await client.send_message(message.channel, embed=embed)
 
-@client.command()
-async def help():
-	embed = discord.Embed(title="AthelBot commands", description="All command prefixes are 'a-', keep this in mind.", color=0x00ffff)
-	embed.add_field(name="help", value="Displays this help dialogue.", inline=False)
-	embed.add_field(name="quote", value="Picks a random Athel quote.", inline=False)
-	embed.add_field(name="delquote", value="Deletes a quote by number.", inline=False)
-	embed.add_field(name="addquote", value="Add a quote to Athel quotes.", inline=False)
-	embed.add_field(name="qnum", value="Pick a quote by number.", inline=False)
-	await client.send_message(message.channel, embed=embed)
-
 client.run(TOKEN)
-
 
 if os.path.exists("athelbotcfg.txt"):
 	os.remove("athelbotcfg.txt")
