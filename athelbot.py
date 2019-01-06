@@ -27,7 +27,7 @@ async def test():
 @client.command()
 async def quote(number):
 	if number == "random":
-		quote_choice = random.randint(o, len(quotes))
+		quote_choice = random.randint(0, len(quotes))
 	else:
 		quote_choice = number
 	
