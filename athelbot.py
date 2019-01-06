@@ -32,7 +32,7 @@ async def quote(number):
 		quote_choice = number
 	
 	embed = discord.Embed(title="Athel Quote", description=quotes[quote_choice], color=0x00ffff)
-	embed.set_footer(text= "Quote #" + str(quote_choice) + " of " + str(len(quotes) + " quotes.")
+	embed.set_footer(text= "Quote #" + str(quote_choice) + " of " + str(len(quotes) + " quotes."))
 	await client.send_message(message.channel, embed=embed)
 
 @client.command()
