@@ -32,17 +32,6 @@ async def on_ready():
 async def test():
 	await client.say("pong")
 
-@client.command()
-async def quote(number):
-	if number == "random":
-		quote_choice = random.randint(o, len(quotes))
-	else:
-		quote_choice = number
-	
-	embed = discord.Embed(title="Athel Quote", description=quotes[quote_choice], color=0x00ffff)
-	embed.set_footer(text= "Quote #" + str(quote_choice) + " of " + str(len(quotes) + " quotes.")
-	#await client.send_message(message.channel, embed=embed)
-
 # Run the bot
 client.run(TOKEN)
 
