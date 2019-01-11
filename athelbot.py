@@ -41,7 +41,7 @@ async def quote(number):
 	
 	embed = discord.Embed(title="Athel Quote", description=quotes[quote_choice], color=0x00ffff)
 	embed.set_footer(text= "Quote #" + str(quote_choice) + " of " + str(len(quotes) + " quotes.")
-	await client.send_message(message.channel, embed=embed)
+	#await client.send_message(message.channel, embed=embed)
 
 @client.command()
 async def help():
@@ -51,7 +51,7 @@ async def help():
 	embed.add_field(name="delquote", value="Deletes a quote by number.", inline=False)
 	embed.add_field(name="addquote", value="Add a quote to Athel quotes.", inline=False)
 	embed.add_field(name="qnum", value="Pick a quote by number.", inline=False)
-	await client.send_message(message.channel, embed=embed)
+	#await client.send_message(message.channel, embed=embed)
 
 # Run the bot
 client.run(TOKEN)
