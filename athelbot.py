@@ -19,7 +19,7 @@ else:
 quotelen = len(quotes) - 1
 
 BOT_PREFIX = 'a-'
-TOKEN = os_environ['BOT_TOKEN']
+TOKEN = os.environ['BOT_TOKEN']
 
 client = Bot(command_prefix = BOT_PREFIX)
 
