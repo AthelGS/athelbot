@@ -1,13 +1,11 @@
 import os
 import discord
 import random
+import asyncio
 from discord import Game
 from discord.ext.commands import Bot
 
-# Set everything up before the bot runs
 quotes = []
-quote_choice = 0
-
 if os.path.exists("athelbotcfg.txt"):
 	with open("athelbotcfg.txt") as f:
 		for line in f:
@@ -18,24 +16,62 @@ else:
 	"Test quote 2",
 	"Test quote 3"]
 
-# Important bot stuff
-BOT_PREFIX = ('a-')
-TOKEN = os.environ['BOT_TOKEN']
+quotelen = len(quotes) - 1
+
+BOT_PREFIX = 'a-'
+TOKEN = os_environ['BOT_TOKEN']
+
 client = Bot(command_prefix = BOT_PREFIX)
 
-@bot.event
+# Bot is ready
+@client.event
 async def on_ready():
-	await bot.change_presence(game=discord.Game(name="On the beta branch!", type=1))
+	print ("Starting up")
+	await client.change_presence(game=discord.Game(name='| Type a-help for details!', type=1))
+	print ("started")
 
-# The commands
+# Test
 @client.command()
 async def test():
 	await client.say("pong")
 
-# Run the bot
+# Quote command
+@client.command(pass_context = True)
+async def quote(ctx, number: int = None):
+	quotelen = len(quotes) - 1
+	if number is None:
+		quchoice = random.randint(0, quotelen)
+	else:
+		quchoice = number
+	em = discord.Embed(title="Athel Quote", description=quotes[quchoice], color=0x00ffff)
+	em.set_footer(text= "Quote #" + str(quchoice) + " of " + str(quotelen) + " quotes.")
+	await client.send_message(ctx.message.channel, embed=em)
+
+# Delete quote command
+@client.command(pass_context = True)
+async def delquote(ctx, number: int = None):
+	if number is None:
+		await client.say('You have to specify what quote to delete! Ex. a-delquote 2')
+	else:
+		quotes.pop(number)
+		quotelen = len(quotes) - 1
+		await client.say('Quote ' + str(number) + ' deleted!')
+
+# Add quote command
+@client.command(pass_context = True)
+async def addquote(ctx, *, quadd: str = None):
+	quotelen = len(quotes) - 1
+	if quadd is None:
+		await client.say('You have to type what the quote is in order to add it!')
+	else:
+		quotes.append(str(quadd))
+		quotelen = len(quotes) - 1
+		em = discord.Embed(title="Added quote", description=quadd, color=0x00ffff)
+		em.set_footer(text=str(quotelen) + " quotes stored.")
+		await client.send_message(ctx.message.channel, embed=em)
+# Run bot
 client.run(TOKEN)
 
-# This is called when the bot is closed.
 if os.path.exists("athelbotcfg.txt"):
 	os.remove("athelbotcfg.txt")
 
@@ -45,3 +81,6 @@ for item in quotes:
 	f.write("%s\n" % item);
 	
 f.close()
+print("configs saved");
+
+print("The bot has been terminated.")
