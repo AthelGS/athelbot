@@ -9,8 +9,7 @@ from discord import Member
 from discord import Game
 from discord.ext import commands
 from discord.ext.commands import Bot
-from discord.ext.commands import has_permissions, MissingPermissions
-from discord.ext.commands import CheckFailure
+from discord.ext.commands import has_permissions
 from discord import Permissions
 
 quotes = []
