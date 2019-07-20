@@ -60,7 +60,7 @@ client.remove_command('help');
 @client.event
 async def on_ready():
 	print ("Starting up")
-	await client.change_presence(status=discord.Status.online, game=discord.Game(name='From the ground up!')
+	await client.change_presence(status=discord.Status.online, game=discord.Game(name='From the ground up!'))
 	print ("started")
 
 # Test
