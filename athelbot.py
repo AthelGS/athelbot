@@ -9,6 +9,8 @@ from discord import Member
 from discord import Game
 from discord.ext import commands
 from discord.ext.commands import Bot
+from discord.ext.commands import has_permissions, MissingPermissions
+from discord.ext.commands import CheckFailure
 from discord import Permissions
 
 quotes = []
@@ -58,8 +60,7 @@ client.remove_command('help');
 @client.event
 async def on_ready():
 	print ("Starting up")
-	game = discord.Game("From the ground up!")
-	await client.change_presence(status=discord.Status.online, activity=game)
+	await client.change_presence(status=discord.Status.online, game=discord.Game(name='From the ground up!')
 	print ("started")
 
 # Test
