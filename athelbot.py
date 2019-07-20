@@ -33,9 +33,9 @@ remote_path="/"
 ftp_connection.cwd(remote_path)
 
 print("Getting quotes...")
-if "ab_quotes.txt" in ftp.nlst():	
+if "ab_quotes.txt" in ftp_connection.nlst():	
 	ftp_connection.retrbinary('RETR ab_quotes.txt', open('ab_quotes.txt', 'wb').write)
-if "ab_quotes_addedby.txt" in ftp.nlst():
+if "ab_quotes_addedby.txt" in ftp_connection.nlst():
 	ftp_connection.retrbinary('RETR ab_quotes_addedby.txt', open('ab_quotes_addedby.txt', 'wb').write)
 print("Done downloading!")
 
